@@ -1,4 +1,5 @@
 import base64
+import time
 
 while True:
     which = input("Do you want to Encode or Decode?\n")
@@ -10,7 +11,13 @@ while True:
             what = what.lower()
 
             if what == "text":
-                print("Encoding text...")
+                data = input("Please Paste or Enter the text you want to encode\n")
+                data = data.encode("ascii")
+                data = base64.b64encode(data)
+                data = data.decode("ascii")
+                print("Encoding...")
+                time.sleep(2)
+                print(data)
                 break
             
             elif what == "file":
@@ -21,8 +28,6 @@ while True:
                 print("Please answer by Text or File")
                 what = input("What do you want to Encode? Text or File?\n")
                 continue
-        
-        print("Encoding...")
         break
     
     elif which == "decode":
